@@ -1,7 +1,7 @@
 # DevOps <!-- omit in toc -->
-> This .README file contains the steps taken to complete the DevOps pathway. The commit history of this repository is a bit different from the steps in the tutorial, because in a discontinuity, I had somehow lost all my progress from the Build Pipeline so had to do it again ):
+<p style="color: red;">This .README file contains the steps taken to complete the DevOps pathway. The commit history of this repository is a bit different from the steps in the tutorial, because in a discontinuity, I had somehow lost all my progress from the Build Pipeline so had to do it again ):</p>
 
-The prerequisites for this project is to have the latest version of Node installed on your computer. 
+> The prerequisites for this project is to have the latest version of Node installed on your computer. 
 
 ## Table Of Contents <!-- omit in toc -->
 - [Create React Application](#create-react-application)
@@ -76,4 +76,16 @@ Thereafter, search for "Publish build artifacts" in the same side-bar, and keep 
 <hr>
 
 ### Create A Release Pipeline
-This is responsible for taking our generated build, and then deploying it. To create this, click on the "Releases" tab under the "Pipelines" menu on the left-side. Choose "Azure App Service deployment" when prompted.
+*This pipeline is responsible for taking our generated build, and then deploying it.* To create it, click on the "Releases" tab under the "Pipelines" menu on the left-side. Choose "Azure App Service deployment" as the template when prompted. You should now have a default release pipeline. We are now going to add an artifact that this pipeline will deploy so to do that click on "Add an artifact".
+
+![](./images/4.PNG)
+
+Then go to "Tasks" from the top-bar, and configure the settings as shown.
+
+![](./images/5.PNG)
+
+Go back to "Pipeline" from the top-bar, and then click on the lightning symbol which is a continuous deployment trigger - meaning this pipeline will be triggered everytime that a new build is produced by the build pipeline.
+
+![](./images/6.PNG)
+
+Everything is now completed so you can go ahead and save this pipeline, as well as create a new manual release from the top-bar to test if everything is working nicely. To test it from the automation's perspective, if you go back to VS Code, change any code and commit those changes, the pipeline will automatically run and the published application would be a reflection of the updated code.
