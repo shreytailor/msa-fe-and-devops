@@ -1,14 +1,16 @@
-# DevOps <!-- omit in toc -->
+## Table Of Contents <!-- omit in toc -->
+- [DevOps](#devops)
+  - [Create React Application](#create-react-application)
+  - [Initial Deployment](#initial-deployment)
+  - [Create A Build Pipeline](#create-a-build-pipeline)
+  - [Create A Release Pipeline](#create-a-release-pipeline)
+- [Front-End](#front-end)
+<hr>
+
+# DevOps
 > This .README file contains the steps taken to complete the DevOps pathway. The commit history of this repository is a bit different from the steps in the tutorial, because in a discontinuity, I had somehow lost all my progress from the Build Pipeline so had to do it again ):
 
 The prerequisites for this project is to have the latest version of Node installed on your computer. 
-
-## Table Of Contents <!-- omit in toc -->
-- [Create React Application](#create-react-application)
-- [Initial Deployment](#initial-deployment)
-- [Create A Build Pipeline](#create-a-build-pipeline)
-  - [Create A Release Pipeline](#create-a-release-pipeline)
-<hr>
 
 ## Create React Application
 Using `npm`, which is the package manager for Node, we first need to install the boilerplate for react using the following command in our terminal.
@@ -75,7 +77,7 @@ After getting the build, create an archive for it by searching "archive" in the 
 Thereafter, search for "Publish build artifacts" in the same side-bar, and keep the default setttings. After doing this, you will see more code automatically being added in your YAML file. We have successfully created the Build Pipeline!
 <hr>
 
-### Create A Release Pipeline
+## Create A Release Pipeline
 *This pipeline is responsible for taking our generated build, and then deploying it.* To create it, click on the "Releases" tab under the "Pipelines" menu on the left-side. Choose "Azure App Service deployment" as the template when prompted. You should now have a default release pipeline. We are now going to add an artifact that this pipeline will deploy so to do that click on "Add an artifact".
 
 ![](./images/4.png)
@@ -89,3 +91,6 @@ Go back to "Pipeline" from the top-bar, and then click on the lightning symbol w
 ![](./images/6.png)
 
 Everything is now completed so you can go ahead and save this pipeline, as well as create a new manual release from the top-bar to test if everything is working nicely. To test it from the automation's perspective, if you go back to VS Code, change any code and commit those changes, the pipeline will automatically run and the published application would be a reflection of the updated code.
+<hr>
+
+# Front-End
