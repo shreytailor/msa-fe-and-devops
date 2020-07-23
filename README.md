@@ -4,7 +4,10 @@
   - [Initial Deployment](#initial-deployment)
   - [Create A Build Pipeline](#create-a-build-pipeline)
   - [Create A Release Pipeline](#create-a-release-pipeline)
-- [Front-End](#front-end)
+- [Web App (FE)](#web-app-fe)
+  - [Basics Of A Component](#basics-of-a-component)
+  - [Importing Components](#importing-components)
+  - [Protecting Passwords & API Keys](#protecting-passwords--api-keys)
 <hr>
 
 # DevOps
@@ -24,14 +27,12 @@ After this, we are ready to create our application so make a new repository on G
 ```
 npx create-react-app my-app --template typescript
 ```
-<hr>
 
 ## Initial Deployment
 From your Azure Portal, we need to click on **Create a resource** and then select "Web App". Fill out the information of your application like shown in the image below.
 ![](./images/1.PNG)
 
 After doing everything, click on "Review + Create" and then complete the wizard by clicking on "Create".
-<hr>
 
 ## Create A Build Pipeline
 *A build pipeline is the entity through which you define your automated build steps for your application.* First go to your Azure DevOps portal, and if you haven't already, create a free account using your Microsoft or GitHub account. Create an organization in which you can store many projects, and one or more of your pipelines. In that organization, create a private project with whatever name that suits your project.
@@ -75,7 +76,6 @@ After getting the build, create an archive for it by searching "archive" in the 
 ![](./images/3.PNG)
 
 Thereafter, search for "Publish build artifacts" in the same side-bar, and keep the default setttings. After doing this, you will see more code automatically being added in your YAML file. We have successfully created the Build Pipeline!
-<hr>
 
 ## Create A Release Pipeline
 *This pipeline is responsible for taking our generated build, and then deploying it.* To create it, click on the "Releases" tab under the "Pipelines" menu on the left-side. Choose "Azure App Service deployment" as the template when prompted. You should now have a default release pipeline. We are now going to add an artifact that this pipeline will deploy so to do that click on "Add an artifact".
@@ -93,4 +93,48 @@ Go back to "Pipeline" from the top-bar, and then click on the lightning symbol w
 Everything is now completed so you can go ahead and save this pipeline, as well as create a new manual release from the top-bar to test if everything is working nicely. To test it from the automation's perspective, if you go back to VS Code, change any code and commit those changes, the pipeline will automatically run and the published application would be a reflection of the updated code.
 <hr>
 
-# Front-End
+# Web App (FE)
+**What is React?** It is a JavaScript front-end framework used to create user interfaces, for websites and mobile devices using React Native. To show any application created from this framework, JavaScript would need to be enabled in your browser. React could be thought of as an Object-Oriented approach to create graphical user interfaces; we can create "components" which could consist of a state, and they are the building blocks for the overall interface.
+
+Here is the code for a simple React component.
+
+## Basics Of A Component
+```jsx
+// Importing the different packages which are needed.
+import React from 'react';
+
+function MyComponent() {
+    /*
+        Note that the return() function can only contain one parent element,
+        but that parent element can contain however many children elements.
+    */
+    return (
+        <div>
+            <h1>Hey!</h1>
+            <p>I am Shrey Tailor</p>
+        </div>
+    )
+}
+
+/* 
+    Process of exporting the component so it can be imported in the main 
+    application.
+*/
+export default App;
+```
+
+## Importing Components
+After we exported the component from the file above, we can use that compoenent in the main `App.ts` (or any other) file by the process of *importing*. This can be done using the code below.
+
+```jsx
+import MyComponent from 'RELATIVE_FILE_PATH';
+```
+
+## Protecting Passwords & API Keys
+Complex APIs are often paid, charging you depending on your usage. If your API keys are unprotected while deploying on GitHub for example, people would be able to easily steal them. Firstly, add `.env.local` to the git ignore file, in which we will be storing all the secret stuff, and then create the `.env.local` file. You can now add entries in it which look like the following.
+
+```
+REACT_APP_API_KEY = 'helloworld'
+```
+
+They can now be used within your application by using `process.env.REACT_APP_API_KEY`. You can create multiple enviroment variable files, because you may have different configuration for the local, development and production stage of your application.
