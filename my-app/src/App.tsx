@@ -44,7 +44,7 @@ function App() {
           function(event) {
             if (event.keyCode === 13) {
               const target = event.target as HTMLTextAreaElement;
-              fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${target.value}&plot=full`)
+              fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${target.value}&plot=full`)
               .then(response => response.json())
               .then(response => {
                 if (response["Error"]) {
