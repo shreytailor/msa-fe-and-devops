@@ -8,6 +8,7 @@
   - [Basics Of A Component](#basics-of-a-component)
   - [Importing Components](#importing-components)
   - [Protecting Passwords & API Keys](#protecting-passwords--api-keys)
+  - [Assignment Explanation](#assignment-explanation)
 <hr>
 
 # DevOps
@@ -138,3 +139,10 @@ REACT_APP_API_KEY = 'helloworld'
 ```
 
 They can now be used within your application by using `process.env.REACT_APP_API_KEY`. You can create multiple enviroment variable files, because you may have different configuration for the local, development and production stage of your application.
+
+## Assignment Explanation
+My assignment is hosted on the following link, https://shrey-devops.azurewebsites.net/. It uses the [OMDb API](http://www.omdbapi.com/) which can be used to search for movies and get its metadata. The application which I created gets the IMDb ID as the input from the user, and then displays all its information such as the cover image, plot, director and etc. 
+
+The Search Bar at the very top is a component that belongs to the Material UI framework. All other components are created using just HTML and CSS which. Everything is made responsive so that the mobile users have a seamless experience.
+
+There is also some other very basic error-handling regarding the API failure, incorrect IMDb ID input etc.

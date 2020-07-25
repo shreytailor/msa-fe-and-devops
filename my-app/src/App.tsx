@@ -40,6 +40,7 @@ function App() {
         InputLabelProps={{
             shrink: true,
         }}
+        placeholder="Search Your Movie..."
         onKeyDown={
           function(event) {
             if (event.keyCode === 13) {
