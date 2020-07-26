@@ -1,3 +1,5 @@
+> This .README file contains the steps taken to complete the FrontEnd + DevOps pathway. Some of the writing is the instruction carried out to perform everything. For both however, there are "Assignment Explanation" sections which tell how the requirements are fulfilled :)
+
 ## Table Of Contents <!-- omit in toc -->
 - [DevOps](#devops)
   - [Create React Application](#create-react-application)
@@ -13,7 +15,6 @@
 <hr>
 
 # DevOps
-> This .README file contains the steps taken to complete the DevOps pathway. The commit history of this repository is a bit different from the steps in the tutorial, because in a discontinuity, I had somehow lost all my progress from the Build Pipeline so had to do it again ):
 
 The prerequisites for this project is to have the latest version of Node installed on your computer. 
 
@@ -97,7 +98,7 @@ Everything is now completed so you can go ahead and save this pipeline, as well 
 ## Assignment Explanation
 My assignment is hosted on the following link, https://shrey-devops.azurewebsites.net/. So from the beginning, I followed the text instructions on how to setup the build and release pipelines for an application. For the description of my pipeline, I am going to explain line-by-line what I have written in my `.yml` file.
 
-We are firstly defining the branches which can trigger our pipeline to execute itself. To fulfil the first requirement which was to create builds when pushing to the `master` or `develop`, we are creating two entries.
+We are firstly defining the branches which can trigger our pipeline to execute itself. To fulfil the first requirement which was to create builds when pushing to the `master` or `develop`, we are creating two entries for the trigger.
 ```
 trigger:
 - master
@@ -149,6 +150,8 @@ After the archive has been generated, we are literally publishing it so that the
     ArtifactName: 'drop'
     publishLocation: 'Container'
 ```
+
+For the Release Pipeline, I have added a filter so that the application is only released if the commit was made on the `master` branch and not `develop` or any other branch.
 <hr>
 
 # Web App (FE)
